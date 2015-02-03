@@ -4,6 +4,8 @@ package org.wordpress.patternlock;
 import org.wordpress.passcodelock.R;
 
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -47,6 +49,8 @@ public class SetLockPatternView {
 			mTipTextView.setTextColor(mActivity.getResources().getColor(android.R.color.holo_red_dark));
 			mReSetBtn.setVisibility(View.INVISIBLE);
 			mTipTextView.setText(R.string.lock_tip_pattern_error_tooless);
+			Animation shake = AnimationUtils.loadAnimation(mActivity, R.anim.shake);
+			mTipTextView.startAnimation(shake);
 			break;
 		case SetLockPatternActivity.STATUS_FIRST_OK:
 			mTipTextView.setTextColor(mActivity.getResources().getColor(android.R.color.white));
@@ -71,7 +75,9 @@ public class SetLockPatternView {
 			mTipTextView.setTextColor(mActivity.getResources().getColor(android.R.color.holo_red_dark));
 			mReSetBtn.setVisibility(View.VISIBLE);
 			mTipTextView.setText(R.string.lock_tip_pattern_error_checkerror);
-			//
+
+			shake = AnimationUtils.loadAnimation(mActivity, R.anim.shake);
+			mTipTextView.startAnimation(shake);
 			break;
 		case SetLockPatternActivity.STATUS_SECOND_OK:
 			mTipTextView.setTextColor(mActivity.getResources().getColor(android.R.color.white));

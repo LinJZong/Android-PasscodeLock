@@ -1,8 +1,11 @@
 package org.wordpress.patternlock;
 
 
+import org.wordpress.passcodelock.PasscodeUnlockActivity;
 import org.wordpress.passcodelock.R;
 
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 public class VerifyLockPatternView {
@@ -33,6 +36,8 @@ public class VerifyLockPatternView {
 			mTipTextView.setTextColor(mActivity.getResources().getColor(android.R.color.holo_red_dark));
 			mTipTextView.setText(
 					String.format(mActivity.getResources().getString(R.string.verify_tip_error), leftTime));
+			Animation shake = AnimationUtils.loadAnimation(mActivity, R.anim.shake);
+			mTipTextView.startAnimation(shake);
 			clearPattern();
 			//
 			break;

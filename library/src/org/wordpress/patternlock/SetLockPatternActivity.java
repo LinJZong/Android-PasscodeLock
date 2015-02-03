@@ -115,9 +115,9 @@ public class SetLockPatternActivity extends Activity implements OnPatternListene
 	public void onPatternStart() {
 		Log.d(TAG, "onPatternStart");
 		//
-		if (mCurrentStatus == STATUS_FIRST_READY) {
+		if (mCurrentStatus == STATUS_FIRST_READY||mCurrentStatus==STATUS_TOO_SHORT) {
 			mCurrentStatus = STATUS_FIRST_STARTED;
-		} else if (mCurrentStatus == STATUS_SECOND_READY) {
+		} else if (mCurrentStatus == STATUS_SECOND_READY||mCurrentStatus==STATUS_SECOND_NOT_MATCHED) {
 			mCurrentStatus = STATUS_SECOND_STARTED;
 		}
 		//

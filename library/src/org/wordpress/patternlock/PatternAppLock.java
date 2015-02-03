@@ -21,11 +21,11 @@ import org.wordpress.AbstractAppLock;
 import org.wordpress.passcodelock.EncryptConfig;
 
 
-public class PatternCodeLock extends AbstractAppLock {
+public class PatternAppLock extends AbstractAppLock {
 
 	private Application currentApp; //Keep a reference to the app that invoked the locker
 	private Date lastFocusDate;
-	public PatternCodeLock(Application currentApp) {
+	public PatternAppLock(Application currentApp) {
 		super();
 		this.currentApp = currentApp;
 	}
