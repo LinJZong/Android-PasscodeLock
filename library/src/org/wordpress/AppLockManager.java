@@ -1,4 +1,6 @@
-package org.wordpress.passcodelock;
+package org.wordpress;
+
+import org.wordpress.passcodelock.PassCodeAppLock;
 
 import android.app.Application;
 
@@ -16,7 +18,7 @@ public class AppLockManager {
         
     public void enableDefaultAppLockIfAvailable(Application currentApp) {
         if (android.os.Build.VERSION.SDK_INT >= 14) {
-            currentAppLocker = new DefaultAppLock(currentApp);
+            currentAppLocker = new PassCodeAppLock(currentApp);
             currentAppLocker.enable();
         }
     }
@@ -28,7 +30,7 @@ public class AppLockManager {
     public boolean isAppLockFeatureEnabled(){
     	if( currentAppLocker == null )
     		return false;
-    	if( currentAppLocker instanceof DefaultAppLock)
+    	if( currentAppLocker instanceof PassCodeAppLock)
     		return (android.os.Build.VERSION.SDK_INT >= 14);
     	else 
     		return true;
@@ -39,6 +41,8 @@ public class AppLockManager {
     		currentAppLocker.disable(); //disable the old applocker if available
     	}
         currentAppLocker = newAppLocker;
+        //enable the AppLocker to  register Activity Lifecycle Callbacks
+        currentAppLocker.enable();
     }
     
     public AbstractAppLock getCurrentAppLock() {

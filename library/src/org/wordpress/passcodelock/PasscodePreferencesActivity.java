@@ -1,5 +1,7 @@
 package org.wordpress.passcodelock;
 
+import org.wordpress.AppLockManager;
+
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;

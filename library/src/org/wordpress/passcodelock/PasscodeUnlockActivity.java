@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
+import org.wordpress.AppLockManager;
 import org.wordpress.passcodelock.R;
 
 public class PasscodeUnlockActivity extends AbstractPasscodeKeyboardActivity {

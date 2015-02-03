@@ -3,6 +3,7 @@ package org.wordpress.passcodelock;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import org.wordpress.AppLockManager;
 import org.wordpress.passcodelock.R;
 
 public class PasscodeManagePasswordActivity extends AbstractPasscodeKeyboardActivity {

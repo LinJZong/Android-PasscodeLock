@@ -1,13 +1,19 @@
-package org.wordpress.passcodelock;
+package org.wordpress;
+
+import java.util.HashSet;
+import java.util.Set;
+
 
 import android.app.Application;
 
-public abstract class AbstractAppLock implements Application.ActivityLifecycleCallbacks {
+public abstract class AbstractAppLock implements Application.ActivityLifecycleCallbacks
+{
     public static final int DEFAULT_TIMEOUT = 2; //2 seconds
     public static final int EXTENDED_TIMEOUT = 60; //60 seconds
     
     protected int lockTimeOut = DEFAULT_TIMEOUT;
-    protected String[] appLockDisabledActivities = new String[0];
+    //修改为使用set
+    protected Set<String> appLockDisabledActivities = new HashSet<String>();
     
     /*
      * There are situations where an activity will start a different application with an intent.  
@@ -20,8 +26,8 @@ public abstract class AbstractAppLock implements Application.ActivityLifecycleCa
     /*
      * There are situations where we don't want call the AppLock on activities (sharing items to out app for example).  
      */
-    public void setDisabledActivities( String[] disabledActs ) {
-    	this.appLockDisabledActivities = disabledActs;
+    public void setDisabledActivities( String disabledActs ) {
+    	appLockDisabledActivities.add(disabledActs);
     }
     
     public abstract void enable();
